@@ -1,0 +1,86 @@
+winget install ajeetdsouza.zoxide
+pwd
+ls
+mkdir 0Jade
+git clone git@github.com:Jedpoet/config.git .config
+ls
+config nu
+winget install Neovim.Neovim
+nvim -version
+nvim -v
+nvim -V1 -v
+scoop -v
+cd .config
+ls
+..
+scoop
+config nu
+cd .config
+ls
+mv starship\starship.toml starship.toml
+ls
+rm starship\
+git add .
+git commit -m "優化starship位置"
+git config --global user.email "jadepoet0231@gmail.com"
+git config --global user.name "Jade"
+git commit -m "優化starship位置"
+git push
+..
+cd .config
+vim starship.toml
+ls
+config nu
+%appdata%
+cd %appdata%/
+cd %APPDATA%/
+..
+~
+ls
+cd `Application Data`
+ls -a
+cd AppData\
+ls
+config nu
+ls
+cd AppData\
+ls
+cd Local\
+ls
+..
+cd LocalLow\
+ls
+..
+ls
+cd Roaming\
+ls
+..
+cd Local\
+ls
+~
+ls
+config nu
+ls
+cd 0Jade
+ls
+vim note.md
+..
+.config\nvim\
+ls
+cd lua
+ls
+vim keymaps.lua
+~
+ls
+cd SynologyDrive\
+ls
+..
+cd $nu.config
+cd $nu.config-path.dir
+cd $nu.config-path
+z nushell
+$nu.default-config-dir
+cd $nu.default-config-dir
+ls
+git add .
+vim .gitignore

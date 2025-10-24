@@ -17,7 +17,7 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-# -- Basic Settings --
+# --- Basic Settings ---
 $env.config.buffer_editor = "neovide"
 $env.config.show_banner = false
 $env.config.edit_mode = "vi"
@@ -28,14 +28,13 @@ $env.PROMPT_INDICATOR_VI_INSERT = "❯ "
 $env.PROMPT_INDICATOR_VI_NORMAL = "❮ "
 $env.config.color_config.bool = {|x| if $x { 'light_green' } else { 'light_red' } }
 
-# -- alias --
-alias ls = ls -d
+# --- alias ---
 alias la = ls -a
 alias nvide = neovide
 alias vim = neovide
 alias lg = lazygit
 
-# -- StarShip --
+# --- StarShip ---
 $env.STARSHIP_SHELL = "nu"
 def create_left_prompt [] {
     starship prompt --cmd-duration $env.CMD_DURATION_MS $'--status=($env.LAST_EXIT_CODE)'
@@ -44,7 +43,7 @@ def create_left_prompt [] {
 $env.PROMPT_COMMAND = { || create_left_prompt }
 $env.PROMPT_COMMAND_RIGHT = ""
 
-# -- Key Bindings --
+# --- Key Bindings ---
 # $env.config.keybindings ++= [
 #     {
 #         name: insert_last_token
@@ -57,17 +56,17 @@ $env.PROMPT_COMMAND_RIGHT = ""
 #     }
 # ]
 
-# -- Plugins --
+# --- Plugins ---
 
 const NU_PLUGIN_DIRS = [
   ($nu.current-exe | path dirname)
   ...$NU_PLUGIN_DIRS
 ]
 
-# -- zoxide --
+# --- zoxide ---
 source ~/.zoxide.nu
 
-# -- yazi --
+# --- yazi ---
 def --env y [...args] {
 	let tmp = (mktemp -t "yazi-cwd.XXXXXX")
 	yazi ...$args --cwd-file $tmp
@@ -76,6 +75,16 @@ def --env y [...args] {
 		cd $cwd
 	}
 	rm -fp $tmp
+}
+
+# --- vim ---
+def vim [...prompt_parts: string] {
+    let file = ($prompt_parts | str join "")
+    if $file == "" {
+        job spawn {neovide}
+        return
+    }
+    job spawn {neovide $file} 
 }
 
 # --- Gemini CLI Helper ---
